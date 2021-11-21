@@ -15,6 +15,8 @@ public class LR8 {
         {
             System.out.println(ex.getMessage());
         }
-        list_cow.print_list();
+        list_cow.PrintArrKorovnik();
+        System.out.println("\n Информация о корове, находящейся в стоиле во 2 ряду на 3 месте:\n");
+        list_cow.GetCow(2,3).print_cow();
     }
 }
