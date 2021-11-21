@@ -6,6 +6,7 @@ public class LR8 {
         List_cow list_cow = new List_cow();
         Food food = new Food();
         food.Add("Силос"); food.Add("Комбикорм"); food.Add("Солома"); food.Add("Свёкла");
+        for (int i = 0; i < 2; i++)
         try
         {
             list_cow.add(food);
@@ -14,5 +15,6 @@ public class LR8 {
         {
             System.out.println(ex.getMessage());
         }
+        list_cow.print_list();
     }
 }
