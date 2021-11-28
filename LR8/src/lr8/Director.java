@@ -1,5 +1,5 @@
 package lr8;
-class Director extends Worker {
+class Director extends Worker implements IWorker {
     public Director()
 	{
 	}
