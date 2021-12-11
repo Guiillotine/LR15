@@ -1,6 +1,6 @@
 package lr8;
 
-public class Building {
+public class Building implements Comparable<Building> {
 	public Building()
 	{
 		length = 50;
@@ -15,25 +15,33 @@ public class Building {
 		this.height = height;
 		this.kolVoFloor = kolVoFloor;
 	}
-	void Set(int length, int width, int height, int kolVoFloor)
+        
+        public String toString() 
+        {
+                return "Длина: "+length+"  Ширина: "+width+"  Высота: "+height+"  Кол. Эт.: "+kolVoFloor;
+        }
+
+	public void Set(int length, int width, int height, int kolVoFloor)
 	{
 		this.length = length;
 		this.width = width;
 		this.height = height;
 		this.kolVoFloor = kolVoFloor;
 	}
-	/*virtual void Print()
-	{
-		cout << "\n Длина здания: " << length << "\n Ширина здания: " << width << "\n Высота здания: " << height;
-	}*/
-	void Print()
+	public void Print()
 	{
 		System.out.println("\n Длина здания: " + length + "\n Ширина здания: " + width + "\n Высота здания: " + height + "\n Количество этажей: " + kolVoFloor);
 	}
-	int GetFloorS()
+	public int GetFloorS()
 	{
 		return length * width;
 	}
+        public int compareTo(Building b) // перегрузка метода сравнения
+        {
+                if (GetFloorS() < b.GetFloorS()) return -1;
+                else return 1;
+        }
+
 protected int length;
 protected int width;
 protected int height;
