@@ -1,37 +1,60 @@
 package lr8;
 import java.util.*;
 public class LR8 {
+    
+    
+    public static int findUsingIterator(int it, ArrayList BuildingList) 
+    {
+        Iterator ib = BuildingList.iterator();
+        for (; it < BuildingList.size(); it++) 
+        { 
+          Building tmp = (Building)BuildingList.get(it);  
+          if (tmp.Getheight() >= 3 && tmp.Getheight() <= 6) return it;
+        } 
+        return -1;
+    } 
 
-    public static void main(String[] args) {
-        Food food = new Food();
-        food.Add("Силос"); food.Add("Комбикорм"); food.Add("Солома"); food.Add("Свёкла");        
-        
-    Worker worker1 = new Worker("Иванов", "Иван", 60, 'М', 22000);
-    System.out.printf("\n РАБОТНИК 1:\n");
-    worker1.Print(); System.out.printf("\n");
-    Worker worker2 = new Worker("Бучнев", "Алексей", 42, 'М', 20000);
-    System.out.printf("\n РАБОТНИК 2:\n");
-    worker2.Print(); System.out.printf("\n"); 
-
-    Compare<Worker> A = new Compare<Worker>();
-    System.out.printf("\n Работник с большим окладом:\n");
-    if (A.Max(worker1, worker2)) worker1.Print(); else worker2.Print();
-    System.out.printf("\n\n Работник с меньшим окладом:\n");
-    if (A.Min(worker1, worker2)) worker1.Print(); else worker2.Print();
-
-    Director director1 = new Director("Борисов", "Борис", 65, 'М', 90000, 40);
-    System.out.printf("\n\n ДИРЕКТОР ПРЕДПРИЯТИЯ 1:\n"); director1.Print(); System.out.printf("\n");
-    Director director2 = new Director("Сидоров", "Сергей", 40, 'М', 60000, 20);
-    System.out.printf("\n ДИРЕКТОР ПРЕДПРИЯТИЯ 2:\n"); director2.Print(); System.out.printf("\n");
-
-    Compare<Director> B = new Compare<Director>();
-    System.out.printf("\n Директор с большим окладом:\n");
-    if (A.Max(director1, director2)) director1.Print(); else director2.Print();
-    System.out.printf("\n\n Директор с меньшим окладом:\n");
-    if (A.Min(director1, director2)) director1.Print(); else director2.Print();
-        
-        
-    System.out.printf("\n");
+    public static void main(String[] args) {       
+    
+      ArrayList BuildingList=new ArrayList();    
+      Iterator ib = BuildingList.iterator();    
+      Garage garage1 = new Garage(15, 15, 2, 1, 10), garage2 = new Garage(20, 25, 3, 1, 20), garage3 = new Garage(20, 15, 3, 1, 15);
+      Building building1 = new Building(50, 50, 6, 2), building2 = new Building(30, 45, 9, 3);
+      BuildingList.add(garage1); BuildingList.add(building1);
+      BuildingList.add(garage2); BuildingList.add(building2); BuildingList.add(garage3);
+      System.out.printf("\n ПОИСК ЗДАНИЙ ПО С ВЫСОТОЙ ОТ 3 ДО 6 М.\n\n ПОЛНЫЙ СПИСОК ЗДАНИЙ:\n");
+      for (int i = 0; i < BuildingList.size(); i++) 
+      { 
+        Building tmp = new Building();  
+        tmp = (Building)BuildingList.get(i);
+        tmp.Print();
+        System.out.printf("\n"); 
+      }
+       System.out.printf("\n ПО ЗАПРОСУ НАЙДЕНО:\n");    
+      for(int i = 0; i < BuildingList.size(); i++) 
+      {
+          int a;
+          a = findUsingIterator(i,BuildingList);
+          if (a != -1)
+          {
+          Building tmp = (Building)BuildingList.get(a);
+          tmp.Print();
+          i = a;
+          }      
+      }
       
+      /*Collections.sort(BuildingList); 
+      System.out.printf("\n СПИСОК ЗДАНИЙ ПОСЛЕ СОРТИРОВКИ:\n");
+      for (int i = 0; i < BuildingList.size(); i++) 
+      { 
+        Building tmp = (Building)BuildingList.get(i);  
+        tmp.Print();
+        System.out.printf("\n"); 
+      }*/
+      
+              
+    System.out.printf("\n");
+    /*Food food = new Food();
+    food.Add("Силос"); food.Add("Комбикорм"); food.Add("Солома"); food.Add("Свёкла");*/
     }
 }
